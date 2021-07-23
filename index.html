@@ -51,10 +51,15 @@
         </ul>
 
         <!-- New todo form -->
-        <form class="text-center my-4">
+        <form class="text-center my-4 add">
           <label for="todo" class="text-light my-1">Add new todo...</label>
-          <input type="text" name="add" class="form-control m-auto" placeholder="Add new todo...">
+          <input type="text" name="add" id="add" class="form-control m-auto" placeholder="Add new todo...">
         </form>
+
+        <!-- error -->
+        <div class="error d-none">
+          <span class="text-danger">Please enter something!!!</span>
+        </div>
       </div>
     </div>
 
