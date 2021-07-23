@@ -1,6 +1,8 @@
 const addTodo = document.querySelector('.add');
 const list = document.querySelector('.todos');
 const error = document.querySelector('.error');
+// selecting input field using form class
+const search = document.querySelector('.search input');
 
 // genrating function for create todo html
 const generateTemplate = (newTodo) => {
@@ -37,4 +39,25 @@ list.addEventListener('click', (e) => {
   if (e.target.classList.contains('delete')) {
     e.target.parentElement.remove();
   }
+});
+
+// Filtering Search
+const filterTodo = (searchItem) => {
+  // console.log(searchItem);
+
+  // convert html into array, doesn't match element
+  Array.from(list.children)
+    .filter((todo) => !todo.textContent.toLowerCase().includes(searchItem))
+    .forEach((todo) => todo.classList.add('filtered'));
+
+  // Matching element
+  Array.from(list.children)
+    .filter((todo) => todo.textContent.toLowerCase().includes(searchItem))
+    .forEach((todo) => todo.classList.remove('filtered'));
+};
+
+// Search todo with keyup event
+search.addEventListener('keyup', () => {
+  const searchItem = search.value.trim().toLowerCase();
+  filterTodo(searchItem);
 });
