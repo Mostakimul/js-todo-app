@@ -13,6 +13,7 @@ const generateTemplate = (newTodo) => {
   list.innerHTML += html;
 };
 
+// Add Todo
 addTodo.addEventListener('submit', (e) => {
   e.preventDefault();
   // trim cut all white space
@@ -26,5 +27,14 @@ addTodo.addEventListener('submit', (e) => {
     addTodo.reset();
   } else {
     error.classList.remove('d-none');
+  }
+});
+
+// Remove Todo
+// Don't attach eventlistener
+// use event deligation
+list.addEventListener('click', (e) => {
+  if (e.target.classList.contains('delete')) {
+    e.target.parentElement.remove();
   }
 });
